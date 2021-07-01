@@ -40,6 +40,12 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
 
+        // 챌린지1 : TextView에 리스너 추가
+        questionTextView.setOnClickListener {
+            currentIndex = (currentIndex + 1) % questionBank.size
+            updateQuestion()
+        }
+
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
