@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         // 챌린지1 : TextView에 리스너 추가
         questionTextView.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
+            isAnswered()
             updateQuestion()
         }
 
@@ -58,13 +59,15 @@ class MainActivity : AppCompatActivity() {
             currentIndex = if (currentIndex == 0) {
                 questionBank.size - 1
             } else {
-                (currentIndex + 1) % questionBank.size
+                (currentIndex - 1) % questionBank.size
             }
+            isAnswered()
             updateQuestion()
         }
 
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
+            isAnswered()
             updateQuestion()
         }
 
@@ -105,6 +108,10 @@ class MainActivity : AppCompatActivity() {
         val correctAnswer = questionBank[currentIndex].answer
 
         val messageResId = if (userAnswer == correctAnswer) {
+            // 챌린지3 : 정답 맞춘 문제를 건너뛰기
+            trueButton.isEnabled = false
+            falseButton.isEnabled = false
+            questionBank[currentIndex].answered = true
             R.string.correct_toast
         } else {
             R.string.incorrect_toast
@@ -113,4 +120,10 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
     }
 
+    // 챌린지3 : 정답 맞춘 문제를 건너뛰기
+    private fun isAnswered() {
+        val answered = questionBank[currentIndex].answered
+        trueButton.isEnabled = !answered
+        falseButton.isEnabled = !answered
+    }
 }
