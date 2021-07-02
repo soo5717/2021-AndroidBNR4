@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             currentIndex = if (currentIndex == 0) {
                 questionBank.size - 1
             } else {
-                (currentIndex + 1) % questionBank.size
+                (currentIndex - 1) % questionBank.size
             }
             updateQuestion()
         }
