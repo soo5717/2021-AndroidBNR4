@@ -27,7 +27,9 @@ class CheatActivity : AppCompatActivity() {
 
         // 챌린지1 : 회전시 커닝 여부 보존
         isAnswerShown = savedInstanceState?.getBoolean(KEY_INDEX, false) ?: false
-        setAnswerShownResult()
+        if(isAnswerShown) {
+            setAnswerShownResult()
+        }
 
         // 인텐트 데이터 받기
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)

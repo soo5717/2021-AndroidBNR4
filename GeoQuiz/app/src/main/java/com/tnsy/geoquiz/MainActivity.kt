@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK) {
             val data: Intent? = it.data
-            quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_SHOW, false) ?: false
+            val isCheater = data?.getBooleanExtra(EXTRA_ANSWER_SHOW, false) ?: false
+            if(isCheater) {
+                quizViewModel.setCheater(isCheater) // 챌린지2 : 문제마다 커닝 여부 관리하기
+            }
         }
     }
 
@@ -114,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         val correctAnswer = quizViewModel.currentQuestionAnswer
 
         val messageResId = when {
-            quizViewModel.isCheater -> R.string.judgment_toast
+            quizViewModel.currentQuestionCheater -> R.string.judgment_toast
             userAnswer == correctAnswer -> R.string.correct_toast
             else -> R.string.incorrect_toast
         }
