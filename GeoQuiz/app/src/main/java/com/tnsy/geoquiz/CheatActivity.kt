@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+private const val KEY_INDEX = "index"
+
 const val EXTRA_ANSWER_SHOW = "com.tnsy.geoquiz.answer_shown"
 private const val EXTRA_ANSWER_IS_TRUE = "com.tnsy.geoquiz.answer_is_true"
 
@@ -17,10 +19,15 @@ class CheatActivity : AppCompatActivity() {
     private lateinit var showAnswerButton: Button
 
     private var answerIsTrue = false
+    private var isAnswerShown = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cheat)
+
+        // 챌린지1 : 회전시 커닝 여부 보존
+        isAnswerShown = savedInstanceState?.getBoolean(KEY_INDEX, false) ?: false
+        setAnswerShownResult()
 
         // 인텐트 데이터 받기
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
@@ -32,17 +39,24 @@ class CheatActivity : AppCompatActivity() {
                 else -> R.string.false_button
             }
             answerTextView.setText(answerText)
-            setAnswerShownResult(true)
 
+            isAnswerShown = true
+            setAnswerShownResult()
         }
     }
 
     // 커닝 여부 MainActivity로 전달
-    private fun setAnswerShownResult(isAnswerShown: Boolean) {
+    private fun setAnswerShownResult() {
         val data = Intent().apply {
             putExtra(EXTRA_ANSWER_SHOW, isAnswerShown)
         }
         setResult(Activity.RESULT_OK, data)
+    }
+
+    // 챌린지1 : 회전시 커닝 여부 보존
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(KEY_INDEX, isAnswerShown)
     }
 
     // 인텐트 요청 캡슐화
