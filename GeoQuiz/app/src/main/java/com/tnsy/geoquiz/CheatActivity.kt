@@ -3,6 +3,7 @@ package com.tnsy.geoquiz
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -15,6 +16,7 @@ class CheatActivity : AppCompatActivity() {
 
     private lateinit var answerTextView: TextView
     private lateinit var showAnswerButton: Button
+    private lateinit var apiTextView: TextView
 
     private var answerIsTrue = false
 
@@ -26,6 +28,12 @@ class CheatActivity : AppCompatActivity() {
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
         answerTextView = findViewById(R.id.answer_text_view)
         showAnswerButton = findViewById(R.id.show_answer_button)
+        apiTextView = findViewById(R.id.api_text_view)
+
+        // 챌린지1 : 안드로이드 버전 보여주기
+        val apiLevel = "API 레벨 ${Build.VERSION.SDK_INT}"
+        apiTextView.text = apiLevel
+
         showAnswerButton.setOnClickListener {
             val answerText = when {
                 answerIsTrue -> R.string.true_button
@@ -33,7 +41,6 @@ class CheatActivity : AppCompatActivity() {
             }
             answerTextView.setText(answerText)
             setAnswerShownResult(true)
-
         }
     }
 
