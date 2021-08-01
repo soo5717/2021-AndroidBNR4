@@ -1,7 +1,6 @@
 package com.tnsy.criminalintent
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -26,6 +25,11 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onCrimeSelected(crimeId: UUID) {
-        Log.d(TAG, "MainActivity.onCrimeSelected: $crimeId")
+        val fragment = CrimeFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null) // 뒤로가기
+            .commit()
     }
 }
