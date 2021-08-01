@@ -86,6 +86,11 @@ class CrimeFragment : Fragment() {
         }
     }
 
+    override fun onStop() { // onStop 할 때 변경사항 한 번에 업데이트
+        super.onStop()
+        crimeDetailViewModel.saveCrime(crime)
+    }
+
     private fun updateUI() {
         titleField.setText(crime.title)
         dateButton.text = crime.date.toString()
