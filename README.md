@@ -10,14 +10,14 @@
 | 4. UI 상태 유지하기                                | GeoQuiz/ch04        | `완료`     |
 | 5. 안드로이드 앱의 디버깅                          | GeoQuiz/ch05        | `완료`     |
 | 6. 두 번째 액티비티 만들기                         | GeoQuiz/ch06        | `완료`     |
-| 7. 안드로이드 SDK 버전과 호환성                    | GeoQuiz/ch07        |            |
-| 8. UI 프래그먼트와 프래그먼트 매니저               | CriminalIntent/ch08 |            |
-| 9. RecyclerVIew로 리스트 보여주기                  | CriminalIntent/ch09 |            |
-| 10. 레이아웃과 위젯으로 사용자 인터페이스 생성하기 | CriminalIntent/ch10 |            |
-| 11. 데이터베이스와 Room 라이브러리                 | CriminalIntent/ch11 |            |
-| 12. 프래그먼트 간의 이동                           | CriminalIntent/ch12 |            |
-| 13. 대화상자                                       | CriminalIntent/ch13 |            |
-| 14. 앱바                                           | CriminalIntent/ch14 |            |
+| 7. 안드로이드 SDK 버전과 호환성                    | GeoQuiz/ch07        | `완료`     |
+| 8. UI 프래그먼트와 프래그먼트 매니저               | CriminalIntent/ch08 | `완료`     |
+| 9. RecyclerVIew로 리스트 보여주기                  | CriminalIntent/ch09 | `완료`     |
+| 10. 레이아웃과 위젯으로 사용자 인터페이스 생성하기 | CriminalIntent/ch10 | `완료`     |
+| 11. 데이터베이스와 Room 라이브러리                 | CriminalIntent/ch11 | `완료`     |
+| 12. 프래그먼트 간의 이동                           | CriminalIntent/ch12 | `완료`     |
+| 13. 대화상자                                       | CriminalIntent/ch13 | `완료`     |
+| 14. 앱바                                           | CriminalIntent/ch14 | `완료`     |
 | 15. 암시적 인텐트                                  | CriminalIntent/ch15 |            |
 | 16. 인텐트를 사용한 사진 찍기                      | CriminalIntent/ch16 |            |
 | 17. 지역화                                         | CriminalIntent/ch17 |            |
